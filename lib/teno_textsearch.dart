@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/engine.dart';
+import 'package:teno_textsearch/src/engine.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+export 'src/engine.dart';
