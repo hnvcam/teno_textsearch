@@ -21,7 +21,9 @@ extension PickByDotNotation on Map<String, dynamic> {
       }
       final lastPart = parts.last;
       if (object.containsKey(lastPart)) {
-        result[lastPart] = object[lastPart];
+        // we need to keep the full dot notation property key
+        // to match with input
+        result[field] = object[lastPart];
       }
     }
     return result;

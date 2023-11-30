@@ -14,7 +14,7 @@ main() {
       'field2': {'field21': 21, 'field22': 22}
     };
     expect(map.pick(['field1.field11', 'field2.field22']),
-        {'field11': 11, 'field22': 22});
+        {'field1.field11': 11, 'field2.field22': 22});
   });
 
   test('pick on non-exist first level property', () {
@@ -28,6 +28,6 @@ main() {
       'field2': {'field21': 21, 'field22': 22}
     };
     expect(map.pick(['field3', 'field1.field12', 'field2.field22']),
-        {'field22': 22});
+        {'field2.field22': 22});
   });
 }
