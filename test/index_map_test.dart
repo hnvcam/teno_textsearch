@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 main() {
   test("export", () {
-    final tokenizer = Tokenizer();
+    final tokenizer = Tokenizer(forwardedOnly: false);
     final indexMap = IndexMap(tokenizer: tokenizer);
     indexMap.add('doc1', {'title': 'sample value', 'description': 'none'});
     indexMap.add('doc2', {'title': 'another one'});

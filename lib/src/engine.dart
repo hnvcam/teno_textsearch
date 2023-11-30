@@ -32,12 +32,14 @@ class TenoTextSearch {
   final String indexKey;
   final List<String> indexFields;
   final bool caseSensitive;
+  final bool forwardedOnly;
 
   TenoTextSearch({
     int minChars = 3,
     int maxChars = 32,
     String wordDelimiter = ' ',
     this.caseSensitive = false,
+    this.forwardedOnly = true,
     required this.indexKey,
     required this.indexFields,
   }) {
@@ -45,6 +47,7 @@ class TenoTextSearch {
         minChars: minChars,
         maxChars: maxChars,
         delimiter: wordDelimiter,
+        forwardedOnly: forwardedOnly,
         caseSensitive: caseSensitive);
     _indexMap = IndexMap(tokenizer: _tokenizer, fields: indexFields);
   }

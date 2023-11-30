@@ -7,12 +7,14 @@ class Tokenizer {
   final int maxChars;
   final String delimiter;
   final bool caseSensitive;
+  final bool forwardedOnly;
 
   const Tokenizer(
       {this.minChars = 3,
       this.maxChars = 64,
       this.delimiter = ' ',
-      this.caseSensitive = false});
+      this.caseSensitive = false,
+      this.forwardedOnly = true});
 
   Set<String> process(String input) {
     final words = input.split(delimiter);
@@ -26,6 +28,11 @@ class Tokenizer {
     for (int charCount = minChars;
         charCount <= effectiveMaxChars;
         charCount++) {
+      if (forwardedOnly) {
+        results.add(element.substring(0, charCount));
+        continue;
+      }
+
       int forwardedPos = 0;
       int reversedPos = element.length;
       while (forwardedPos + charCount <= reversedPos) {

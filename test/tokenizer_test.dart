@@ -41,7 +41,7 @@ main() {
         }
       )
     ];
-    final tokenizer = Tokenizer();
+    final tokenizer = Tokenizer(forwardedOnly: false);
 
     for (var data in testData) {
       test('tokenize ${data.input} return ${data.expected.length} token', () {
@@ -74,7 +74,7 @@ main() {
         }
       )
     ];
-    final tokenizer = Tokenizer(minChars: 4, maxChars: 5);
+    final tokenizer = Tokenizer(minChars: 4, maxChars: 5, forwardedOnly: false);
 
     for (var data in testData) {
       test('tokenize ${data.input} return ${data.expected.length} token', () {
@@ -114,7 +114,7 @@ main() {
         }
       )
     ];
-    final tokenizer = Tokenizer(minChars: 4, maxChars: 5);
+    final tokenizer = Tokenizer(minChars: 4, maxChars: 5, forwardedOnly: false);
 
     for (var data in testData) {
       test('tokenize ${data.input} return ${data.expected.length} token', () {
@@ -123,5 +123,29 @@ main() {
         expect(tokenizer.process(data.input), data.expected);
       });
     }
+  });
+
+  group('forwarded only', () {
+    test('Tokenize multiple words', () {
+      const input = 'Tokenize multiple words';
+      final tokenizer = Tokenizer(forwardedOnly: true);
+      expect(tokenizer.process(input), {
+        'tok',
+        'toke',
+        'token',
+        'tokeni',
+        'tokeniz',
+        'tokenize',
+        'mul',
+        'mult',
+        'multi',
+        'multip',
+        'multipl',
+        'multiple',
+        'wor',
+        'word',
+        'words'
+      });
+    });
   });
 }
