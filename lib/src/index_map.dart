@@ -46,9 +46,15 @@ class IndexMap {
   }
 
   void import(Map<String, dynamic> json) {
-    _keys.addAll(json['keys']);
-    _data.addAll(json['data']);
-    _effectiveFields.addAll(json['fields']);
+    final keys = (json['keys'] as Iterable).cast<String>();
+    final data = (json['data'] as Map).cast<String, List<dynamic>>().map(
+        (key, value) =>
+            MapEntry(key, value.map((e) => (e as List).cast<int>()).toList()));
+    final fields = (json['fields'] as Iterable).cast<String>();
+
+    _keys.addAll(keys);
+    _data.addAll(data);
+    _effectiveFields.addAll(fields);
   }
 
   List<DocPropIndex>? find(String word) {

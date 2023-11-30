@@ -1,3 +1,6 @@
+## 0.0.4
+- Type casting when importing from file
+
 ## 0.0.3
 - Support forwardedOnly mode, which is the common usage.
 
