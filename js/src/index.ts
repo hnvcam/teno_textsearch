@@ -1,1 +1,0 @@
-export { TenoTextSearch } from './engine';
